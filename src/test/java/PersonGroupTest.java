@@ -24,14 +24,14 @@ public class PersonGroupTest {
     }
 
     @Test
-    public void testFindCelebrity() {
+    public void testFindCelebrity_noCelebritiesNoAcquaintances() {
         addGroupMembers();
         Set<Person> result = group.findCelebrities();
         assertEquals(result.size(), 0);
     }
 
     @Test
-    public void testFindCelebrity_2() {
+    public void testFindCelebrity_OneCelebrity() {
         juan.getAcquaintances().add(jenniferLopez);
         pedro.getAcquaintances().add(jenniferLopez);
         pablo.getAcquaintances().add(jenniferLopez);
@@ -41,7 +41,7 @@ public class PersonGroupTest {
     }
 
     @Test
-    public void testFindCelebrity_3() {
+    public void testFindCelebrity_NoCelebritiesOneAcquaintance() {
         juan.getAcquaintances().add(jenniferLopez);
         pedro.getAcquaintances().add(jenniferLopez);
         pablo.getAcquaintances().add(jenniferLopez);
@@ -52,7 +52,7 @@ public class PersonGroupTest {
     }
 
     @Test
-    public void testFindCelebrity_4() {
+    public void testFindCelebrity_TwoCelebrities() {
         juan.getAcquaintances().add(jenniferLopez);
         juan.getAcquaintances().add(pablo);
         pedro.getAcquaintances().add(jenniferLopez);
@@ -63,7 +63,7 @@ public class PersonGroupTest {
     }
 
     @Test
-    public void testFindCelebrity_5() {
+    public void testFindCelebrity_emptyGroup() {
         List<Person> emptyGroup = new ArrayList<>();
         group = new PersonsGroup(emptyGroup);
         Set<Person> result = group.findCelebrities();
@@ -71,7 +71,7 @@ public class PersonGroupTest {
     }
 
     @Test
-    public void testFindCelebrity_6() {
+    public void testFindCelebrity_NoCelebritiesChagnigOrder() {
         jenniferLopez.getAcquaintances().add(juan);
         pedro.getAcquaintances().add(pablo);
         pablo.getAcquaintances().add(pedro);
